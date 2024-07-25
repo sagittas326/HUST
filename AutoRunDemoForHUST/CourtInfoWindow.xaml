@@ -1,0 +1,34 @@
+﻿<Window x:Class="AutoRunDemoForHUST.CourtInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoRunDemoForHUST"
+        mc:Ignorable="d"
+        Title="场地选择信息" Height="160" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="270"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="ComboBoxCampus" ItemsSource="{Binding ViewModel.CampusMap}" DisplayMemberPath="Key" SelectedIndex="0" Grid.Row="0" IsEnabled="False" />
+        <ComboBox x:Name="ComboBoxCourt" ItemsSource="{Binding ViewModel.CourtMap}" DisplayMemberPath="Key" SelectedIndex="0" Grid.Row="1" />
+        <ComboBox x:Name="ComboBoxDate" ItemsSource="{Binding ViewModel.DateMap}" DisplayMemberPath="Key" SelectedIndex="2" Grid.Row="2" />
+        <ComboBox x:Name="ComboBoxTime" ItemsSource="{Binding ViewModel.TimeMap}" DisplayMemberPath="Key" SelectedIndex="4" Grid.Row="3" />
+        <Button x:Name="BtnAddCampus" Content="添加校区" Click="BtnAddCampus_Click " Grid.Row="0" Grid.Column="1" IsEnabled="False" />
+        <Button x:Name="BtnAddCourt" Content="添加场地" Click="BtnAddCourt_Click " Grid.Row="1" Grid.Column="1" />
+        <Button x:Name="BtnAddDate" Content="添加日期" Click="BtnAddDate_Click " Grid.Row="2" Grid.Column="1" />
+        <Button x:Name="BtnAddTime" Content="添加时间" Click="BtnAddTime_Click " Grid.Row="3" Grid.Column="1" />
+        <Button x:Name="BtnClearCampus" Content="清除校区" Click="BtnClearCampus_Click" Grid.Row="0" Grid.Column="2" IsEnabled="False" />
+        <Button x:Name="BtnClearCourt" Content="清除场地" Click="BtnClearCourt_Click " Grid.Row="1" Grid.Column="2" />
+        <Button x:Name="BtnClearDate" Content="清除日期" Click="BtnClearDate_Click " Grid.Row="2" Grid.Column="2" />
+        <Button x:Name="BtnClearTime" Content="清除时间" Click="BtnClearTime_Click " Grid.Row="3" Grid.Column="2" />
+    </Grid>
+</Window>

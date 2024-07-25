@@ -1,0 +1,154 @@
+﻿            switch (location)
+            {
+                case "西边体育馆-羽毛球场":
+                    {
+                        #region //原版
+                        //// 获取所有的预约信息元素
+                        //dynamic document = Browser.Document;
+                        //var elements = document.querySelectorAll(".getajax");
+                        //// 创建一个字典，用于存储场地名称和预约状态
+                        //Dictionary<string, string> courtStatus = new Dictionary<string, string>();
+                        //// 遍历所有的预约信息元素
+                        //foreach (var element in elements)
+                        //{
+                        //    // 获取场地名称
+                        //    string courtName = element.querySelector(".imageTitle p").innerText;
+                        //    // 获取预约状态
+                        //    string status = element.querySelector(".spacezt").innerText;
+                        //    // 将场地名称和预约状态添加到字典中
+                        //    courtStatus[courtName] = status;
+                        //}
+                        //// 设置场地优先级：5-6-4-7-2-1-9-3-8
+                        //int[] order = new int[] { 5, 6, 4, 7, 2, 1, 9, 3, 8 };
+                        //// 按照优先级排序
+                        //var orderedCourtStatus = order.SelectMany(o => courtStatus.Where(c => c.Key.Contains(o.ToString())));
+                        //// 获取所有的td元素
+                        //var tdElements = document.getElementsByTagName("td");
+                        //// 遍历字典中的所有场地
+                        //foreach (var court in orderedCourtStatus)
+                        //{
+                        //    // 如果预约状态为"可预约"
+                        //    if (court.Value == "可预约")
+                        //    {
+                        //        // 遍历所有的td元素
+                        //        for (var i = 0; i < tdElements.length; i++)
+                        //        {
+                        //            // 如果td元素的title属性包含court.Key
+                        //            if (tdElements[i].title.includes(court.Key))
+                        //            {
+                        //                // 触发点击事件
+                        //                tdElements[i].click();
+                        //                break;
+                        //            }
+                        //        }
+                        //        break;
+                        //    }
+                        //}
+                        #endregion
+                        // 获取所有的预约信息元素
+                        dynamic document = Browser.Document;
+                        dynamic elements = document.getElementsByClassName("noAppointment getajax");
+                        // 创建一个字典，用于存储场地名称和预约状态
+                        Dictionary<string, string> courtStatus = new Dictionary<string, string>();
+                        // 遍历所有的预约信息元素
+                        foreach (var element in elements)
+                        {
+                            // 获取场地名称
+                            string courtName = element.querySelector(".imageTitle p").innerText;
+                            // 获取预约状态
+                            string status = element.querySelector(".spacezt").innerText;
+                            // 将场地名称和预约状态添加到字典中
+                            courtStatus[courtName] = status;
+                        }
+                        // 设置场地优先级：5-6-4-7-2-1-9-3-8
+                        int[] order = new int[] { 5, 6, 4, 7, 2, 1, 9, 3, 8 };
+                        // 按照优先级排序
+                        var orderedCourtStatus = order.SelectMany(o => courtStatus.Where(c => c.Key.Contains(o.ToString())));
+                        // 遍历排序后的字典
+                        foreach (var court in orderedCourtStatus)
+                        {
+                            // 如果预约状态为"已被预约"
+                            if (court.Value == "已被预约")
+                            {
+                                // 模拟点击这个场地的按钮
+                                Browser.InvokeScript("eval", $"document.querySelector('td[title=\"{court.Key}\"]').click();");
+                                // 跳出循环
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                case "游泳馆-二楼羽毛球场":
+                    {
+                        // 获取所有的预约信息元素
+                        dynamic document = Browser.Document;
+                        dynamic elements = document.getElementsByClassName("getajax");
+                        // 创建一个字典，用于存储场地名称和预约状态
+                        Dictionary<string, string> courtStatus = new Dictionary<string, string>();
+                        // 遍历所有的预约信息元素
+                        foreach (var element in elements)
+                        {
+                            // 获取场地名称
+                            string courtName = element.querySelector(".//p[1]").innerText.Trim();
+                            // 获取预约状态
+                            string status = element.querySelector(".//p[2]").innerText.Trim();
+                            // 将场地名称和预约状态添加到字典中
+                            courtStatus[courtName] = status;
+                        }
+                        // 设置场地优先级：1-2-3-4-5-6-7-8-9
+                        int[] order = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+                        // 按照优先级排序
+                        var orderedCourtStatus = order.SelectMany(o => courtStatus.Where(c => c.Key.Contains(o.ToString())));
+
+                        // 遍历排序后的字典
+                        foreach (var court in orderedCourtStatus)
+                        {
+                            // 如果预约状态为"可预约"
+                            if (court.Value == "可预约")
+                            {
+                                // 模拟点击这个场地的按钮
+                                Browser.InvokeScript("eval", $"document.querySelector('button[title=\"{court.Key}\"]').click();");
+                                // 跳出循环
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                case "光谷体育馆-主馆羽毛球场":
+                    {
+                        // 获取所有的预约信息元素
+                        dynamic document = Browser.Document;
+                        dynamic elements = document.getElementsByClassName("getajax");
+                        // 创建一个字典，用于存储场地名称和预约状态
+                        Dictionary<string, string> courtStatus = new Dictionary<string, string>();
+                        // 遍历所有的预约信息元素
+                        foreach (var element in elements)
+                        {
+                            // 获取场地名称
+                            string courtName = element.querySelector(".imageTitle p").innerText;
+                            // 获取预约状态
+                            string status = element.querySelector(".spacezt").innerText;
+                            // 将场地名称和预约状态添加到字典中
+                            courtStatus[courtName] = status;
+                        }
+                        // 设置场地优先级：1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20
+                        int[] order = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+                        // 按照优先级排序
+                        var orderedCourtStatus = order.SelectMany(o => courtStatus.Where(c => c.Key.Contains(o.ToString())));
+                        // 遍历排序后的字典
+                        foreach (var court in orderedCourtStatus)
+                        {
+                            // 如果预约状态为"可预约"
+                            if (court.Value == "可预约")
+                            {
+                                // 模拟点击这个场地的按钮
+                                Browser.InvokeScript("eval", $"document.querySelector('td[title=\"{court.Key}\"]').click();");
+                                // 跳出循环
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }

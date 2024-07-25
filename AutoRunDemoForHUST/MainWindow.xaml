@@ -1,0 +1,74 @@
+﻿<Window x:Class="AutoRunDemoForHUST.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoRunDemoForHUST"
+        mc:Ignorable="d"
+        Title="HUST抢羽毛球场地专属Demo--优先级：校区-日期-时间-场地" Height="900" Width="1440" WindowStartupLocation="CenterScreen" WindowState="Maximized" SizeChanged="Window_SizeChanged" Closing="Window_Closing">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BtnBack" Content="后退" Click="BtnBack_Click" Grid.Column="0" />
+            <Button x:Name="BtnForward" Content="前进" Click="BtnForward_Click" Grid.Column="1" />
+            <Button x:Name="BtnRefresh" Content="刷新" Click="BtnRefresh_Click" Grid.Column="2" />
+            <TextBox x:Name="TxtUrl" HorizontalAlignment="Stretch" KeyDown="TxtUrl_KeyDown" Grid.Column="3" />
+            <Button x:Name="BtnNavigator" Content="导航" Click="BtnNavigator_Click" Grid.Column="4" />
+            <Button x:Name="BtnDefault" Content="百度" Click="BtnDefault_Click" Grid.Column="5" />
+            <Button x:Name="BtnHome" Content="HUST体育学院场馆中心" Click="BtnHome_Click" Grid.Column="6" />
+        </Grid>
+        <DockPanel DockPanel.Dock="Top">
+            <DockPanel DockPanel.Dock="Right">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Button x:Name="BtnAddCourtInfo" Content="添加场次" Click="BtnAddCourtInfo_Click" />
+                    <TextBlock Text="同伴序号：" />
+                    <TextBox x:Name="TxtPartnerId" Text="1" FontWeight="Bold"  Width="25" MaxLength="2" TextAlignment="Center" VerticalAlignment="Top" TextChanged="TxtPartnerId_TextChanged" PreviewTextInput="TxtPartnerId_PreviewTextInput" />
+                    <TextBlock x:Name="TxtSpeed" Text="速度："/>
+                    <Slider x:Name="SpeedSlider" Minimum="1" Maximum="100" Width="100" ValueChanged="SpeedSlider_ValueChanged"/>
+                    <TextBlock x:Name="TxtSpeedValue" Text="" Width="50" FontFamily="Times New Roman" TextAlignment="Right" />
+                    <Button x:Name="BtnResetSpeed" Content="重置速度" Click="BtnResetSpeed_Click" />
+                    <Button x:Name="BtnStart" Content="开抢" Click="BtnStart_Click" IsEnabledChanged="BtnStart_IsEnabledChanged"/>
+                    <Button x:Name="BtnStop" Content="停止" IsEnabled="False" Click="BtnStop_Click" />
+                </StackPanel>
+                <!--<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Button x:Name="BtnCampus" Content="选择校区" Click="BtnCampus_Click" />
+                    <Button x:Name="BtnCourt" Content="选择场地" Click="BtnCourt_Click" />
+                    <Button x:Name="BtnPreviousDay" Content="上一天" Click="BtnPreviousDay_Click" />
+                    <Button x:Name="BtnNextDay" Content="下一天" Click="BtnNextDay_Click" />
+                    <Button x:Name="BtnTime" Content="选择时间" Click="BtnTime_Click" />
+                    <Button x:Name="BtnPartner" Content="选择同伴" Click="BtnPartner_Click" />
+                    <Button x:Name="BtnCourtNo" Content="选择场地编号" Click="BtnCourtNo_Click" />
+                    <Button x:Name="BtnCloseDialog" Content="关闭弹窗" Click="BtnCloseDialog_Click"/>
+                </StackPanel>-->
+            </DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="TxtCampus" Text="校区信息：&#x0a;" Grid.Column="0" />
+                <TextBlock x:Name="TxtCourt" Text="场地信息：" Grid.Column="1" />
+                <TextBlock x:Name="TxtDate" Text="日期信息：" Grid.Column="2" />
+                <TextBlock x:Name="TxtTime" Text="时间信息：" Grid.Column="3" />
+                <TextBlock x:Name="TxtTips" Text="提示：" TextWrapping="Wrap" Grid.Column="4" />
+            </Grid>
+        </DockPanel>
+        <Border BorderBrush="#666666" BorderThickness="1,1,1,1">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="False">
+                <WebBrowser x:Name="Browser" Navigated="Browser_Navigated" LoadCompleted="Browser_LoadCompleted" />
+            </ScrollViewer>
+        </Border>
+    </DockPanel>
+</Window>

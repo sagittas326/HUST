@@ -1,0 +1,13 @@
+﻿<Window x:Class="AutoRunDemoForHUST.CustomMessageBoxWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoRunDemoForHUST"
+        mc:Ignorable="d"
+        Title="提示！" Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+    <DockPanel>
+        <Button x:Name="BtnOK" Content="确认" Click="BtnOK_Click" DockPanel.Dock="Bottom"/>
+        <TextBlock x:Name="TxtMessage" Foreground="Red" VerticalAlignment="Center" TextWrapping="Wrap" />
+    </DockPanel>
+</Window>
